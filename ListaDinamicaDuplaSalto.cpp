@@ -1,6 +1,6 @@
 #include <stdio.h>
 # include <iostream>
-#include <stdlib.h> // biblioteca necessária para utilizara funçao RAND
+#include <stdlib.h> // biblioteca necessÃ¡ria para utilizara funÃ§ao RAND
 
 using namespace std;
 
@@ -53,11 +53,11 @@ NoPtr BuscaEmListaDeSalto (NoPtr Raiz[], int maxNivel, char Chave)
 {
 	NoPtr Ant, Aux;
 	int nvl;
-	// Encontra o primeiro nivel que não aponte para NULL
-	// ou seja, primeiro nível que tem conteúdo
+	// Encontra o primeiro nivel que nÃ£o aponte para NULL
+	// ou seja, primeiro nÃ­vel que tem conteÃºdo
 	for (nvl = maxNivel-1; nvl >= 0 && !Raiz[nvl]; nvl--);
 	
-	// se o nvl resultar em menor que ZERO, o vetor de ponteiros do descritor não tem conteúdo
+	// se o nvl resultar em menor que ZERO, o vetor de ponteiros do descritor nÃ£o tem conteÃºdo
 	// entao retorna NULL 
 	if (nvl < 0)
 		return NULL;
@@ -67,44 +67,44 @@ NoPtr BuscaEmListaDeSalto (NoPtr Raiz[], int maxNivel, char Chave)
 	Ant = Aux = Raiz[nvl];
 	while (true) {
 		
-		// se a Chave é o valor INFO procurado retorna o ponteiro Aux
+		// se a Chave Ã© o valor INFO procurado retorna o ponteiro Aux
 		if (Chave == Aux->Info)
 			return Aux;
 		else
-			// se a Chave é menor que o valor INFO procurado
+			// se a Chave Ã© menor que o valor INFO procurado
 			if (Chave < Aux->Info) {
 				
-				// se é o último nivel retorna NULL pois não existe a CHAVE procurada
+				// se Ã© o Ãºltimo nivel retorna NULL pois nÃ£o existe a CHAVE procurada
 				if (nvl == 0)
 					return NULL;
-				// se não é o último nível
+				// se nÃ£o Ã© o Ãºltimo nÃ­vel
 				else
-					// verifica se ainda está no vetor RAIZ
+					// verifica se ainda estÃ¡ no vetor RAIZ
 					if (Aux == Raiz[nvl])
-						// como está na RAIZ, aponta Aux para um nível abaixo na RAIZ (detalhe do -- antes do nvl - PRÉ-FIXADO)
+						// como estÃ¡ na RAIZ, aponta Aux para um nÃ­vel abaixo na RAIZ (detalhe do -- antes do nvl - PRÃ‰-FIXADO)
 						Aux = Raiz[--nvl];
 
-					//se não está na Raiz
+					//se nÃ£o estÃ¡ na Raiz
 					else
-						// desce un nível no Aux Atual (guardado no ponteiro auxiliar ANT)
+						// desce un nÃ­vel no Aux Atual (guardado no ponteiro auxiliar ANT)
 						Aux = *(Ant->Lig + --nvl);
 			} 
-			// se a chave é maior que o valor INFO procurado
+			// se a chave Ã© maior que o valor INFO procurado
 			else {
 				// ajusta o ponteiro anterior (Ant) para apontar para o ponteiro de retorno (REFERENCIA DE PARADA)
 				Ant = Aux;
-				// verifica se existe ponteiro para o próximo NÓ no nível analizado
+				// verifica se existe ponteiro para o prÃ³ximo NÃ“ no nÃ­vel analizado
 				if (*(Aux->Lig + nvl) != NULL)
 					// se existe ponteiro, seta o Aux para este ponteiro
 					Aux = *(Aux->Lig + nvl);
-				// se não existe ponteiro para o próximo nível
+				// se nÃ£o existe ponteiro para o prÃ³ximo nÃ­vel
 				else {
-					// reduz o nível até encontrar um ponteiro que não aponte para NULL
+					// reduz o nÃ­vel atÃ© encontrar um ponteiro que nÃ£o aponte para NULL
 					for (nvl--; nvl >= 0 && *(Aux->Lig + nvl)==NULL; nvl--);
 					// se encontrou ajusta o Auxiliar para apontar para o ponteiro encontrado
 					if (nvl >= 0)
 						Aux = *(Aux->Lig + nvl);
-					// se desceu todo nível e não encontrou retorna NULL
+					// se desceu todo nÃ­vel e nÃ£o encontrou retorna NULL
 					else
 						return NULL;
 				}
@@ -161,11 +161,11 @@ void imprime (NoPtr Raiz[], int maxNivel)
 	Aux[maxNivel-1] = Raiz[maxNivel-1];
 	Ant[maxNivel-1] = 0;
 	int nvl;
-	// Encontra o primeiro nivel que não aponte para NULL
-	// ou seja, primeiro nível que tem ponteiro para conteúdo
+	// Encontra o primeiro nivel que nÃ£o aponte para NULL
+	// ou seja, primeiro nÃ­vel que tem ponteiro para conteÃºdo
 	for (nvl = maxNivel-1; nvl >= 0 && !Raiz[nvl]; nvl--);
 	
-	// se o nvl resultar em menor que ZERO, o vetor de ponteiros do descritor (RAIZ) não tem conteúdo
+	// se o nvl resultar em menor que ZERO, o vetor de ponteiros do descritor (RAIZ) nÃ£o tem conteÃºdo
 	// entao retorna LISTA VAZIA 
 	if (nvl < 0)
 		cout << "!!! ATENCAO - LISTA VAZIA !!!" << endl;
@@ -209,7 +209,7 @@ int main()
 	limite[1] = 5;
 	limite[2] = 20;
 
-	// Teste funçao nivel
+	// Teste funÃ§ao nivel
 	cout << " *** TESTES DA FUNCAO QUE RETORNA NIVEL ***"<< endl;
 	cout << "VALOR: 20 "<< defineNivel(20) << endl;
 	cout << "VALOR: 15 "<< defineNivel(15) << endl;
@@ -225,14 +225,32 @@ int main()
 	InsereListaDeSalto (L, limite, 3, 20);
 	InsereListaDeSalto (L, limite, 3, 3);
 	
-	// IMPRIME O VALOR DO ELEMENTO NA POSIÇAO 1 DO NIVEL 0
-		cout << " *** ELEMENTO NA POSIÇAO 1 DO NIVEL 0 ***"<< endl;
+	// IMPRIME O VALOR DO ELEMENTO NA POSIÃ‡AO 1 DO NIVEL 0
+		cout << " *** ELEMENTO NA POSIÃ‡AO 1 DO NIVEL 0 ***"<< endl;
 	cout << "NIVEL: " <<0 <<" INFO: "<< L[0]->Info << endl << endl;
 	
 	cout << " *** INICIO DA FUNCAO IMPRIME (TODOS OS ELEMENTOS ***"<< endl;		
 	imprime (L, 3);			
 	cout << " *** FIM DA FUNCAO IMPRIME (TODOS OS ELEMENTOS) ***"<< endl;		
 
+
+	// TESTE DA FUNÃ‡AO DE BUSCA
+	NoPtr Buscar;
+	Buscar = BuscaEmListaDeSalto(L,3,101);
+	cout << " *** TESTES DA FUNCAO DE BUSCA POSITIVA ***"<< endl;	
+	if (Buscar == NULL)
+		cout << " *** CHAVE NAO ENCONTRADA  ***"<< endl << endl;
+	else		
+		cout << "CHAVE ENCONTRADA - VALOR: "<< Buscar->Info << endl << endl;	
+	
+	Buscar = BuscaEmListaDeSalto(L,3,30);
+	cout << " *** TESTES DA FUNCAO DE BUSCA NEGATIVA ***"<< endl;		
+	if (Buscar == NULL)
+		cout << " *** CHAVE NAO ENCONTRADA  ***"<< endl << endl;
+	else		
+		cout << "CHAVE ENCONTRADA - VALOR: "<< Buscar->Info << endl << endl;
+	
+	
 	
 	
 	
